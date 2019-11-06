@@ -1,4 +1,4 @@
-package yaoxiaojian.chapter17;
+package yaoxiaojian.chapter1;
 
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
