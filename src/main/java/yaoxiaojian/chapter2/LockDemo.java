@@ -14,8 +14,7 @@ public class LockDemo {
         CuratorFramework curatorFramework = CuratorFrameworkFactory.builder().
                 connectString(CONNECTION_STR).sessionTimeoutMs(50000000).
                 retryPolicy(new ExponentialBackoffRetry(1000, 3)).build();
-        curatorFramework.start();
-
+        curatorFramework.start();;
         final InterProcessMutex lock=new InterProcessMutex(curatorFramework,"/locks");
 
         for(int i=0;i<10;i++){

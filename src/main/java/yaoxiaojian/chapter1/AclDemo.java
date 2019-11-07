@@ -28,8 +28,6 @@ public class AclDemo {
     }
 
     private static void demo2() throws Exception {
-
-
         CuratorFramework curatorFramework = CuratorFrameworkFactory.builder().
                 connectString(CONNECTION_STR).sessionTimeoutMs(5000).
                 authorization("digest","admin:admin".getBytes()).
