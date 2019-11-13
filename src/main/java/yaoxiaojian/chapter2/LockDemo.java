@@ -16,7 +16,6 @@ public class LockDemo {
                 retryPolicy(new ExponentialBackoffRetry(1000, 3)).build();
         curatorFramework.start();;
         final InterProcessMutex lock=new InterProcessMutex(curatorFramework,"/locks");
-
         for(int i=0;i<10;i++){
             new Thread(()->{
                 System.out.println(Thread.currentThread().getName()+"->尝试竞争锁");
@@ -24,12 +23,8 @@ public class LockDemo {
                     lock.acquire(); //阻塞竞争锁
 
                     System.out.println(Thread.currentThread().getName()+"->成功获得了锁");
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                try {
                     Thread.sleep(400000);
-                } catch (InterruptedException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }finally {
                     try {
@@ -40,11 +35,5 @@ public class LockDemo {
                 }
             },"Thread-"+i).start();
         }
-
-
     }
-
-
-
-
 }
